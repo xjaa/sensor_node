@@ -190,8 +190,11 @@ void app_main(void)
     
     uint8_t mac[6];
     esp_read_mac(mac, ESP_MAC_BT);
-    g_adv_data.node_id = mac[5];
-    ESP_LOGI(TAG, "This device's Node ID is: %d (from MAC: ...%02X)", g_adv_data.node_id, mac[5]);
+    // g_adv_data.node_id = mac[5];
+    // ESP_LOGI(TAG, "This device's Node ID is: %d (from MAC: ...%02X)", g_adv_data.node_id, mac[5]);
+    // 直接将 node_id 设置为 1
+    g_adv_data.node_id = 2;
+    ESP_LOGI(TAG, "This device's Node ID is: %d (Hardcoded)", g_adv_data.node_id);
 
     nimble_port_init();
     ble_hs_cfg.sync_cb = ble_app_on_sync;
